@@ -1,0 +1,166 @@
+<view class="admin-page">
+  <view class="admin-hero">
+    <text class="hero-kicker">Campus Admin</text>
+    <text class="hero-title">后台管理台</text>
+    <text class="hero-desc">这里可以快速巡查线索与用户信息。</text>
+    <view class="hero-pills">
+      <view class="hero-pill">{{postTotal}} 条线索</view>
+      <view class="hero-pill hero-pill-light">{{userTotal}} 位用户</view>
+    </view>
+  </view>
+
+  <view class="tool-card">
+    <view class="tool-row" bindtap="handleToolTap" data-action="refresh">
+      <view class="tool-copy">
+        <text class="tool-title">刷新后台数据</text>
+        <text class="tool-desc">重新拉取帖子、用户和总量统计</text>
+      </view>
+      <text class="tool-tag">刷新</text>
+    </view>
+
+    <view class="tool-row" bindtap="handleToolTap" data-action="copySwagger">
+      <view class="tool-copy">
+        <text class="tool-title">复制接口文档入口</text>
+        <text class="tool-desc">便于在浏览器中打开 Swagger 页面</text>
+      </view>
+      <text class="tool-tag">/test</text>
+    </view>
+
+    <view class="tool-row" bindtap="handleToolTap" data-action="copyApi">
+      <view class="tool-copy">
+        <text class="tool-title">复制 API 文档地址</text>
+        <text class="tool-desc">需要调试数据时可以直接查看接口描述</text>
+      </view>
+      <text class="tool-tag">/api-docs</text>
+    </view>
+  </view>
+
+  <view class="stats-grid">
+    <block wx:for="{{summaryCards}}" wx:key="label">
+      <view class="stats-card">
+        <text class="stats-value">{{item.value}}</text>
+        <text class="stats-label">{{item.label}}</text>
+      </view>
+    </block>
+  </view>
+
+  <view class="panel-card">
+    <view class="panel-head">
+      <view>
+        <text class="panel-title">管理列表</text>
+        <text class="panel-meta">支持搜索、查看与删除</text>
+      </view>
+
+      <view class="tab-switch">
+        <text
+          class="tab-chip {{currentTab == 'post' ? 'tab-chip-active' : ''}}"
+          bindtap="switchTab"
+          data-tab="post"
+        >帖子</text>
+        <text
+          class="tab-chip {{currentTab == 'user' ? 'tab-chip-active' : ''}}"
+          bindtap="switchTab"
+          data-tab="user"
+        >用户</text>
+      </view>
+    </view>
+
+    <view class="search-box">
+      <input
+        class="search-input"
+        placeholder="{{currentTab == 'post' ? '搜索标题、内容、发布人' : '搜索昵称、班级、联系方式'}}"
+        value="{{searchKeyword}}"
+        bindinput="onSearchInput"
+      />
+      <text wx:if="{{searchKeyword}}" class="search-clear" bindtap="clearSearch">清空</text>
+    </view>
+
+    <view class="panel-tips">
+      <text class="panel-tip">最近刷新：{{lastUpdated}}</text>
+      <text class="panel-tip">
+        当前显示：{{currentTab == 'post' ? filteredPosts.length : filteredUsers.length}} 条
+      </text>
+    </view>
+
+    <block wx:if="{{loading}}">
+      <view class="state-card">正在加载后台数据...</view>
+    </block>
+
+    <block wx:elif="{{errorMessage}}">
+      <view class="state-card state-card-error">{{errorMessage}}</view>
+    </block>
+
+    <block wx:elif="{{currentTab == 'post'}}">
+      <view wx:if="{{!filteredPosts.length}}" class="state-card">暂无符合条件的帖子</view>
+
+      <block wx:if="{{filteredPosts.length}}">
+        <block wx:for="{{filteredPosts}}" wx:key="id">
+          <view class="data-card">
+            <view class="data-head">
+              <view class="data-head-main">
+                <text class="data-title">{{item.title}}</text>
+                <view class="badge-row">
+                  <text class="badge badge-type">{{item.typeLabel}}</text>
+                  <text class="badge {{item.statusTone}}">{{item.statusLabel}}</text>
+                </view>
+              </view>
+              <text class="danger-link" bindtap="confirmDeletePost" data-id="{{item.id}}">删除</text>
+            </view>
+
+            <text class="data-desc">{{item.content}}</text>
+
+            <view class="meta-grid">
+              <text class="meta-item">ID {{item.id}}</text>
+              <text class="meta-item">发布人 {{item.userNickname}}</text>
+              <text class="meta-item">热度 {{item.heat}}</text>
+              <text class="meta-item">评论 {{item.comments}}</text>
+              <text class="meta-item">点赞 {{item.likes}}</text>
+              <text class="meta-item">时间 {{item.createdTime}}</text>
+            </view>
+
+            <view wx:if="{{item.tags.length}}" class="tag-row">
+              <block wx:for="{{item.tags}}" wx:key="*this">
+                <text class="tag-chip">{{item}}</text>
+              </block>
+            </view>
+          </view>
+        </block>
+      </block>
+    </block>
+
+    <block wx:else>
+      <view wx:if="{{!filteredUsers.length}}" class="state-card">暂无符合条件的用户</view>
+
+      <block wx:if="{{filteredUsers.length}}">
+        <block wx:for="{{filteredUsers}}" wx:key="id">
+          <view class="data-card user-card">
+            <view class="data-head">
+              <view class="user-head">
+                <image class="user-avatar" src="{{item.header}}"></image>
+                <view class="user-copy">
+                  <text class="data-title">{{item.nickname}}</text>
+                  <text class="user-subtitle">{{item.realName}} · {{item.clazz}}</text>
+                </view>
+              </view>
+              <text class="danger-link" bindtap="confirmDeleteUser" data-id="{{item.id}}">删除</text>
+            </view>
+
+            <view class="badge-row badge-row-spaced">
+              <text class="badge {{item.statusTone}}">{{item.statusLabel}}</text>
+              <text class="badge badge-type">积分 {{item.integral}}</text>
+            </view>
+
+            <text class="data-desc">联系方式：{{item.contact}}</text>
+
+            <view class="meta-grid">
+              <text class="meta-item">用户 ID {{item.id}}</text>
+              <text class="meta-item">找回数 {{item.findNum}}</text>
+              <text class="meta-item">遗失数 {{item.lostNum}}</text>
+              <text class="meta-item">创建时间 {{item.createdTime}}</text>
+            </view>
+          </view>
+        </block>
+      </block>
+    </block>
+  </view>
+</view>

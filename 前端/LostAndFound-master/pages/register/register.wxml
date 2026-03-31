@@ -1,0 +1,47 @@
+<view class="auth-page register-page">
+  <view class="auth-orb auth-orb-left"></view>
+  <view class="auth-orb auth-orb-right"></view>
+
+  <view class="auth-hero">
+    <text class="auth-kicker">Create Your Account</text>
+    <text class="auth-title">创建校园账号</text>
+    <text class="auth-desc">完成注册后，你就可以发布失物信息、查看认领动态并维护自己的联系方式。</text>
+  </view>
+
+  <view class="auth-card">
+    <view class="field-group">
+      <text class="field-label">学工号</text>
+      <view class="field-shell">
+        <image class="field-icon" src="../../images/source/name.png"></image>
+        <input class="field-input" maxlength="11" bindinput="bindKeyInput" placeholder="请输入学工号" />
+      </view>
+    </view>
+
+    <view class="field-group">
+      <text class="field-label">密码</text>
+      <view class="field-shell">
+        <image class="field-icon" src="../../images/source/key.png"></image>
+        <input class="field-input" password="true" bindinput="bindPwdInput" placeholder="设置 6 位以上密码" />
+      </view>
+    </view>
+
+    <view class="field-group">
+      <text class="field-label">确认密码</text>
+      <view class="field-shell">
+        <image class="field-icon" src="../../images/source/key.png"></image>
+        <input class="field-input" password="true" bindinput="bindConfirmPwdInput" placeholder="请再次输入密码" />
+      </view>
+    </view>
+
+    <button class="auth-button" loading="{{loading}}" bindtap="handleRegister">注册并绑定微信</button>
+
+    <view class="register-note">
+      <text class="note-text">注册会同时绑定当前微信账号，后续可直接登录并自动识别你的身份。</text>
+    </view>
+
+    <view class="auth-links">
+      <text class="auth-links-text">已经有账号了？</text>
+      <text class="auth-links-action" bindtap="goLogin">返回登录</text>
+    </view>
+  </view>
+</view>

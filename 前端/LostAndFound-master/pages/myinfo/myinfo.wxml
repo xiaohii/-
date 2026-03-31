@@ -1,0 +1,144 @@
+<view class="profile-page">
+  <view class="profile-hero">
+    <image src="../../images/myinfo/setting.png" class="profile-action" bindtap="Setting"></image>
+    <text class="profile-badge">My Profile</text>
+    <view class="profile-avatar-wrap" bindtap="changeAvatar">
+      <image class="profile-avatar" src="{{avatarUrl}}"></image>
+    </view>
+    <view class="profile-avatar-chip">{{isAvatarSaving ? '上传中' : '换头像'}}</view>
+    <text class="profile-avatar-tip">点击头像可更换个人头像</text>
+    <text class="profile-name">{{nickName}}</text>
+    <text class="profile-contact">{{contact_type}}: {{contact_value}}</text>
+    <view class="hero-bottom">
+      <view class="hero-pill">{{archiveBadge}}</view>
+      <view class="hero-pill hero-pill-light">完整度 {{profileCompletion}}%</view>
+    </view>
+  </view>
+
+  <view class="profile-card account-card">
+    <view class="section-head">
+      <text class="section-title">档案概览</text>
+      <text class="section-meta">账号信息</text>
+    </view>
+
+    <view class="account-grid">
+      <view class="account-item">
+        <text class="account-label">用户编号</text>
+        <text class="account-value">{{userId}}</text>
+      </view>
+      <view class="account-item">
+        <text class="account-label">联系方式状态</text>
+        <text class="account-value">{{contactStatus}}</text>
+      </view>
+      <view class="account-item">
+        <text class="account-label">头像状态</text>
+        <text class="account-value">{{avatarStatus}}</text>
+      </view>
+      <view class="account-item">
+        <text class="account-label">档案等级</text>
+        <text class="account-value">{{archiveBadge}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="profile-card">
+    <view class="section-head">
+      <text class="section-title">快捷操作</text>
+      <text class="section-meta">常用功能</text>
+    </view>
+
+    <block wx:for="{{quickActions}}" wx:key="id">
+      <view class="quick-row" bindtap="handleQuickAction" data-action="{{item.id}}">
+        <view class="quick-copy">
+          <text class="quick-title">{{item.title}}</text>
+          <text class="quick-desc">{{item.desc}}</text>
+        </view>
+        <text class="quick-arrow">></text>
+      </view>
+    </block>
+  </view>
+
+  <view class="stats-grid">
+    <block wx:for="{{statsCards}}" wx:key="label">
+      <view class="stats-card">
+        <text class="stats-value">{{item.value}}</text>
+        <text class="stats-label">{{item.label}}</text>
+      </view>
+    </block>
+  </view>
+
+  <view wx:if="{{isGuest}}" class="guest-card">
+    <text class="guest-title">当前未登录</text>
+    <text class="guest-desc">先逛逛首页也可以，登录后就能查看档案、发布记录和联系方式。</text>
+    <button class="guest-login-btn" bindtap="goLogin">立即登录</button>
+  </view>
+
+  <view class="profile-card tips-card">
+    <view class="section-head">
+      <text class="section-title">档案小贴士</text>
+      <text class="section-meta">让信息更容易被看见</text>
+    </view>
+
+    <block wx:for="{{archiveTips}}" wx:key="*this">
+      <view class="tip-row">
+        <text class="tip-dot"></text>
+        <text class="tip-text">{{item}}</text>
+      </view>
+    </block>
+  </view>
+
+  <view class="profile-section">
+    <view class="section-head">
+      <text class="section-title">我的发布</text>
+      <text class="section-meta">{{listofitem.length}} 条</text>
+    </view>
+
+    <view wx:if="{{!listofitem.length}}" class="profile-empty">
+      你还没有发布内容，去首页右下角试试发一条线索吧。
+    </view>
+
+    <block wx:for="{{listofitem}}" wx:key="publish_id">
+      <view class="post-card">
+        <view class="post-head">
+          <view class="post-author">
+            <image src="{{item.usericon}}" class="post-avatar"></image>
+            <view class="post-meta">
+              <text class="post-name">{{item.username}}</text>
+              <text class="post-time">{{item.sub_time}}</text>
+            </view>
+          </view>
+
+          <image
+            src="../../images/myinfo/trash.png"
+            class="delete-btn"
+            data-publish-id="{{item.publish_id}}"
+            bindtap="messageDelete"
+          ></image>
+        </view>
+
+        <text class="post-text">{{item.text}}</text>
+
+        <view wx:if="{{item.claimPoint}}" class="post-chip-row">
+          <text class="post-meta-chip">认领点：{{item.claimPoint}}</text>
+        </view>
+
+        <view wx:if="{{item.image != ''}}" class="post-grid">
+          <block wx:for="{{item.imagelist}}" wx:for-item="specific_url" wx:key="*this">
+            <image
+              bindtap="photopreview"
+              data-list="{{item.imagelist}}"
+              src="{{specific_url}}"
+              data-src="{{specific_url}}"
+              class="post-image"
+              mode="aspectFill"
+            ></image>
+          </block>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <view wx:if="{{!isGuest}}" class="logout-wrap">
+    <button class="logout-btn" bindtap="Logout">退出登录</button>
+  </view>
+</view>

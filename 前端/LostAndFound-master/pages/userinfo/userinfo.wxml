@@ -1,0 +1,43 @@
+<view class="profile-page">
+  <view class="profile-hero">
+    <text class="profile-badge">User Profile</text>
+    <image class="profile-avatar" src="{{avatarUrl}}"></image>
+    <text class="profile-name">{{nickName}}</text>
+    <text class="profile-contact">{{contact_type}}：{{contact_value}}</text>
+  </view>
+
+  <view class="profile-section">
+    <view class="section-head">
+      <text class="section-title">TA 的发布</text>
+      <text class="section-meta">{{listofitem.length}} 条</text>
+    </view>
+
+    <view wx:if="{{!listofitem.length}}" class="profile-empty">这个用户暂时还没有公开发布的内容。</view>
+
+    <block wx:for="{{listofitem}}" wx:key="publish_id">
+      <view class="post-card">
+        <view class="post-head">
+          <view class="post-author">
+            <image src="{{item.usericon}}" class="post-avatar"></image>
+            <view class="post-meta">
+              <text class="post-name">{{item.username}}</text>
+              <text class="post-time">{{item.sub_time}}</text>
+            </view>
+          </view>
+        </view>
+
+        <text class="post-text">{{item.text}}</text>
+
+        <view wx:if="{{item.claimPoint}}" class="post-chip-row">
+          <text class="post-meta-chip">认领点：{{item.claimPoint}}</text>
+        </view>
+
+        <view wx:if="{{item.image != ''}}" class="post-grid">
+          <block wx:for="{{item.imagelist}}" wx:for-item="specific_url" wx:key="*this">
+            <image bindtap="photopreview" data-list="{{item.imagelist}}" src="{{specific_url}}" data-src="{{specific_url}}" class="post-image" mode="aspectFill"></image>
+          </block>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

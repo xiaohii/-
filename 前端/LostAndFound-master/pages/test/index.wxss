@@ -1,0 +1,389 @@
+.admin-page {
+  min-height: 100vh;
+  padding: 24rpx 24rpx 56rpx;
+}
+
+.admin-hero {
+  padding: 34rpx 30rpx 42rpx;
+  border-radius: 36rpx;
+  background:
+    radial-gradient(circle at top right, rgba(255, 255, 255, 0.18), transparent 34%),
+    linear-gradient(135deg, #21352d 0%, #2f6f52 52%, #9db56f 100%);
+  box-shadow: 0 26rpx 54rpx rgba(33, 53, 45, 0.16);
+  color: #ffffff;
+}
+
+.hero-kicker {
+  display: inline-flex;
+  padding: 10rpx 18rpx;
+  border-radius: 999rpx;
+  background: rgba(255, 255, 255, 0.14);
+  font-size: 22rpx;
+  letter-spacing: 3rpx;
+}
+
+.hero-title {
+  display: block;
+  margin-top: 22rpx;
+  font-size: 44rpx;
+  font-weight: 700;
+}
+
+.hero-desc {
+  display: block;
+  margin-top: 16rpx;
+  font-size: 25rpx;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.hero-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14rpx;
+  margin-top: 28rpx;
+}
+
+.hero-pill {
+  padding: 12rpx 20rpx;
+  border-radius: 999rpx;
+  background: rgba(255, 255, 255, 0.2);
+  font-size: 22rpx;
+}
+
+.hero-pill-light {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.tool-card,
+.panel-card {
+  margin-top: 22rpx;
+  padding: 24rpx;
+  border-radius: 30rpx;
+  background: rgba(255, 253, 248, 0.96);
+  border: 1rpx solid rgba(54, 94, 67, 0.08);
+  box-shadow: 0 18rpx 40rpx rgba(34, 49, 39, 0.06);
+}
+
+.tool-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 0;
+  border-top: 1rpx solid rgba(54, 94, 67, 0.08);
+}
+
+.tool-row:first-child {
+  padding-top: 0;
+  border-top: none;
+}
+
+.tool-copy {
+  flex: 1;
+  min-width: 0;
+}
+
+.tool-title {
+  display: block;
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #26382b;
+}
+
+.tool-desc {
+  display: block;
+  margin-top: 8rpx;
+  font-size: 22rpx;
+  line-height: 1.6;
+  color: #758173;
+}
+
+.tool-tag {
+  margin-left: 18rpx;
+  padding: 10rpx 16rpx;
+  border-radius: 999rpx;
+  background: #edf4eb;
+  font-size: 22rpx;
+  color: #2f6f52;
+}
+
+.stats-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14rpx;
+  margin-top: 22rpx;
+}
+
+.stats-card {
+  width: calc(50% - 7rpx);
+  padding: 24rpx 22rpx;
+  border-radius: 26rpx;
+  background: rgba(255, 253, 248, 0.96);
+  border: 1rpx solid rgba(54, 94, 67, 0.08);
+  box-shadow: 0 18rpx 40rpx rgba(34, 49, 39, 0.06);
+}
+
+.stats-value {
+  display: block;
+  font-size: 34rpx;
+  font-weight: 700;
+  color: #2f6f52;
+}
+
+.stats-label {
+  display: block;
+  margin-top: 10rpx;
+  font-size: 22rpx;
+  color: #748172;
+}
+
+.panel-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 18rpx;
+}
+
+.panel-title {
+  display: block;
+  font-size: 34rpx;
+  font-weight: 700;
+  color: #223127;
+}
+
+.panel-meta {
+  display: block;
+  margin-top: 8rpx;
+  font-size: 22rpx;
+  color: #738072;
+}
+
+.tab-switch {
+  display: inline-flex;
+  gap: 10rpx;
+  padding: 8rpx;
+  border-radius: 999rpx;
+  background: #f0f4ed;
+}
+
+.tab-chip {
+  min-width: 92rpx;
+  padding: 14rpx 18rpx;
+  border-radius: 999rpx;
+  font-size: 24rpx;
+  text-align: center;
+  color: #6f7e71;
+}
+
+.tab-chip-active {
+  background: linear-gradient(135deg, #2f6f52 0%, #5b946e 100%);
+  color: #ffffff;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  margin-top: 22rpx;
+  padding: 8rpx 10rpx 8rpx 22rpx;
+  border-radius: 24rpx;
+  background: #f4f6ef;
+}
+
+.search-input {
+  flex: 1;
+  min-width: 0;
+  height: 72rpx;
+  font-size: 26rpx;
+  color: #233428;
+}
+
+.search-clear {
+  padding: 14rpx 18rpx;
+  border-radius: 999rpx;
+  background: #ffffff;
+  font-size: 22rpx;
+  color: #7a867b;
+}
+
+.panel-tips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+  margin-top: 18rpx;
+}
+
+.panel-tip {
+  padding: 10rpx 18rpx;
+  border-radius: 999rpx;
+  background: #f6f3ea;
+  font-size: 22rpx;
+  color: #728070;
+}
+
+.state-card {
+  margin-top: 22rpx;
+  padding: 40rpx 28rpx;
+  border-radius: 24rpx;
+  background: #f5f7f1;
+  font-size: 26rpx;
+  line-height: 1.8;
+  text-align: center;
+  color: #657566;
+}
+
+.state-card-error {
+  background: #fff0ed;
+  color: #b75d4a;
+}
+
+.data-card {
+  margin-top: 18rpx;
+  padding: 24rpx;
+  border-radius: 26rpx;
+  background: linear-gradient(180deg, #fffefb 0%, #f8f6ef 100%);
+  border: 1rpx solid rgba(54, 94, 67, 0.08);
+}
+
+.data-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 18rpx;
+}
+
+.data-head-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.data-title {
+  display: block;
+  font-size: 30rpx;
+  font-weight: 700;
+  line-height: 1.5;
+  color: #223127;
+}
+
+.badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10rpx;
+  margin-top: 14rpx;
+}
+
+.badge-row-spaced {
+  margin-top: 18rpx;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 8rpx 16rpx;
+  border-radius: 999rpx;
+  font-size: 22rpx;
+}
+
+.badge-type {
+  background: #eaf3eb;
+  color: #2f6f52;
+}
+
+.is-success {
+  background: #e6f3ea;
+  color: #2f7a4d;
+}
+
+.is-warning {
+  background: #fff3df;
+  color: #b7832c;
+}
+
+.is-danger {
+  background: #ffe9e3;
+  color: #bd5b47;
+}
+
+.is-info {
+  background: #e8f1fb;
+  color: #4774b8;
+}
+
+.is-muted {
+  background: #eef0ee;
+  color: #7a857b;
+}
+
+.danger-link {
+  flex-shrink: 0;
+  padding: 10rpx 0;
+  font-size: 24rpx;
+  color: #b55d48;
+}
+
+.data-desc {
+  display: block;
+  margin-top: 18rpx;
+  font-size: 26rpx;
+  line-height: 1.8;
+  color: #48594c;
+}
+
+.meta-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+  margin-top: 18rpx;
+}
+
+.meta-item {
+  padding: 10rpx 16rpx;
+  border-radius: 18rpx;
+  background: #f2f5ee;
+  font-size: 22rpx;
+  color: #6c7c6f;
+}
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10rpx;
+  margin-top: 18rpx;
+}
+
+.tag-chip {
+  padding: 8rpx 14rpx;
+  border-radius: 999rpx;
+  background: #f7eddc;
+  font-size: 22rpx;
+  color: #9a6b28;
+}
+
+.user-card {
+  padding-top: 22rpx;
+}
+
+.user-head {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  flex: 1;
+}
+
+.user-avatar {
+  width: 82rpx;
+  height: 82rpx;
+  border-radius: 50%;
+  background: #edf2ec;
+}
+
+.user-copy {
+  min-width: 0;
+  margin-left: 18rpx;
+}
+
+.user-subtitle {
+  display: block;
+  margin-top: 8rpx;
+  font-size: 22rpx;
+  color: #768374;
+}
