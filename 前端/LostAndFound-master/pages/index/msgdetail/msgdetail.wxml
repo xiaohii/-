@@ -1,0 +1,71 @@
+<view class="detail-page">
+  <view class="detail-card">
+    <navigator url="../../userinfo/userinfo?userid={{userid}}" class="detail-author">
+      <image src="{{usericon}}" class="detail-avatar"></image>
+      <view class="detail-meta">
+        <text class="detail-name">{{username}}</text>
+        <text class="detail-time">{{time}}</text>
+      </view>
+    </navigator>
+
+    <text class="detail-text">{{text}}</text>
+
+    <view wx:if="{{claimPoint}}" class="detail-claim">
+      <text class="detail-claim-label">认领点</text>
+      <text class="detail-claim-value">{{claimPoint}}</text>
+    </view>
+
+    <view class="detail-engagement">
+      <text class="detail-engagement-chip">评论 {{comments}}</text>
+      <text class="detail-engagement-chip">点赞 {{likes}}</text>
+    </view>
+
+    <view class="detail-actions">
+      <button class="detail-like-button {{liked ? 'detail-like-button-active' : ''}}" loading="{{likeLoading}}" bindtap="toggleLike">
+        <text class="detail-like-icon">+1</text>
+        <text class="detail-like-text">{{liked ? '已点赞' : '点赞一下'}}</text>
+      </button>
+      <text class="detail-action-tip">点赞后会同步更新到首页和后台统计</text>
+    </view>
+
+    <view wx:if="{{imagelist.length}}" class="detail-grid">
+      <block wx:for="{{imagelist}}" wx:for-item="specific_url" wx:key="*this">
+        <image bindtap="photopreview" data-list="{{imagelist}}" src="{{specific_url}}" data-src="{{specific_url}}" mode="aspectFill" class="detail-image"></image>
+      </block>
+    </view>
+  </view>
+
+  <view class="comment-card">
+    <view class="comment-head">
+      <view>
+        <text class="comment-title">评论区</text>
+        <text class="comment-subtitle">看看大家的线索，或补充更多信息</text>
+      </view>
+      <text class="comment-count">{{comments}} 条</text>
+    </view>
+
+    <view class="composer">
+      <textarea class="composer-input" maxlength="120" placeholder="写下你的评论、补充物品特征或约定交接信息" value="{{commentValue}}" bindinput="bindCommentInput"></textarea>
+      <view class="composer-foot">
+        <text class="composer-length">{{commentValue.length}}/120</text>
+        <button class="composer-button" loading="{{submittingComment}}" bindtap="submitComment">发表评论</button>
+      </view>
+    </view>
+
+    <view wx:if="{{commentsLoading}}" class="comment-state">评论加载中...</view>
+    <view wx:elif="{{!commentList.length}}" class="comment-state">暂时还没有评论，来留下第一条线索吧。</view>
+
+    <block wx:for="{{commentList}}" wx:key="itemKey">
+      <view class="comment-item">
+        <image src="{{item.avatarUrl}}" class="comment-avatar"></image>
+        <view class="comment-body">
+          <view class="comment-row">
+            <text class="comment-name">{{item.nickName}}</text>
+            <text class="comment-time">{{item.time}}</text>
+          </view>
+          <text class="comment-content">{{item.content}}</text>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

@@ -1,0 +1,28 @@
+<view class="info-page">
+  <view class="info-hero">
+    <text class="info-tag">Contact Update</text>
+    <text class="info-title">更新联系方式</text>
+    <text class="info-desc">如果你的联系方式变了，可以在这里快速同步，方便失主或拾到者第一时间联系你。</text>
+  </view>
+
+  <form bindsubmit="formSubmit" class="info-card">
+    <view class="info-block">
+      <text class="block-label">联系方式类型</text>
+      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+        <view class="picker-shell">
+          <text class="picker-value">{{array[index]}}</text>
+          <text class="picker-arrow">选择</text>
+        </view>
+      </picker>
+    </view>
+
+    <view class="info-block">
+      <text class="block-label">新的联系方式</text>
+      <view class="input-shell">
+        <input class="info-input" name="contact_value" placeholder="请输入新的手机号、QQ 或微信号" />
+      </view>
+    </view>
+
+    <button class="save-button" formType="submit">保存修改</button>
+  </form>
+</view>

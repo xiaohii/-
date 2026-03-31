@@ -1,0 +1,98 @@
+.locator-page {
+  min-height: 100vh;
+  padding: 44rpx 28rpx 56rpx;
+}
+
+.locator-hero {
+  padding: 18rpx 10rpx 32rpx;
+}
+
+.locator-tag {
+  display: inline-flex;
+  padding: 10rpx 18rpx;
+  border-radius: 999rpx;
+  background: rgba(47, 111, 82, 0.12);
+  color: #2f6f52;
+  font-size: 22rpx;
+  letter-spacing: 3rpx;
+}
+
+.locator-title {
+  display: block;
+  margin-top: 28rpx;
+  font-size: 58rpx;
+  font-weight: 700;
+  color: #1f3326;
+  line-height: 1.16;
+}
+
+.locator-desc {
+  display: block;
+  margin-top: 18rpx;
+  font-size: 26rpx;
+  line-height: 1.78;
+  color: #657468;
+}
+
+.locator-card {
+  margin-top: 18rpx;
+  border-radius: 30rpx;
+  background: rgba(255, 253, 248, 0.96);
+  border: 1rpx solid rgba(54, 94, 67, 0.08);
+  box-shadow: 0 18rpx 40rpx rgba(34, 49, 39, 0.06);
+  overflow: hidden;
+}
+
+.locator-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24rpx;
+}
+
+.locator-head-copy {
+  flex: 1;
+}
+
+.locator-name {
+  display: block;
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #223127;
+}
+
+.locator-note {
+  display: block;
+  margin-top: 8rpx;
+  font-size: 22rpx;
+  color: #758276;
+}
+
+.locator-icon {
+  width: 60rpx;
+  height: 60rpx;
+  margin-left: 20rpx;
+}
+
+.locator-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.25s ease;
+}
+
+.locator-body-open {
+  max-height: 600rpx;
+  padding-bottom: 10rpx;
+}
+
+.locator-row {
+  margin: 0 24rpx 14rpx;
+  padding: 22rpx 24rpx;
+  border-radius: 22rpx;
+  background: #f4f6ef;
+}
+
+.locator-row-text {
+  font-size: 26rpx;
+  color: #324238;
+}

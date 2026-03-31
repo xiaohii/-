@@ -1,0 +1,87 @@
+<view class="home-page">
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" class="hero-swiper" interval="{{interval}}" duration="{{duration}}">
+    <block wx:for="{{swiper_url}}" wx:key="*this">
+      <swiper-item class="banner">
+        <image src="{{item}}" bindtap="bindViewTap" class="banner-image" mode="aspectFill" />
+        <view class="banner-copy">
+          <text class="banner-kicker">Campus Lost &amp; Found</text>
+          <text class="banner-title">让拾到与寻找更快相遇</text>
+          <text class="banner-desc">及时发布线索，帮助每一件物品更快回到主人身边。</text>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <view class="toolbar-card">
+    <view class="toolbar-top">
+      <view class="toolbar-chip" bindtap="actionSheetTap">{{cur_type}} 筛选</view>
+      <view class="toolbar-search" bindtap="search">
+        <icon type="search" size="16"></icon>
+        <text class="toolbar-search-text">搜索信息</text>
+      </view>
+    </view>
+
+    <view class="segment">
+      <view class="segment-item {{activeIndex==0?'segment-item-active':''}}" bindtap="stateswitch" data-index="0">寻物启事</view>
+      <view class="segment-item {{activeIndex==1?'segment-item-active':''}}" bindtap="stateswitch" data-index="1">失物招领</view>
+    </view>
+  </view>
+
+  <action-sheet hidden="{{actionSheetHidden}}" bindchange="actionSheetChange">
+    <block wx:for-items="{{actionSheetItems}}" wx:key="*this">
+      <action-sheet-item bindtap="selectCategory" data-category="{{item}}">{{item}}</action-sheet-item>
+    </block>
+    <action-sheet-cancel>取消</action-sheet-cancel>
+  </action-sheet>
+
+  <navigator wx:if="{{check == true}}" url="../edit/edit" class="publish-fab">
+    <view class="publish-fab-core">
+      <text class="publish-plus">+</text>
+    </view>
+    <text class="publish-label">发布</text>
+  </navigator>
+
+  <view class="feed-shell">
+    <view class="feed-head">
+      <text class="feed-title">{{activeIndex==0?'寻物广场':'招领广场'}}</text>
+      <text class="feed-meta">当前分类：{{cur_type}}</text>
+    </view>
+
+    <view wx:if="{{listofitem.length <= 1}}" class="theme-card theme-empty">暂时还没有相关信息，试试切换分类或下拉刷新。</view>
+
+    <block wx:for="{{listofitem}}" wx:key="itemKey">
+      <view wx:if="{{!item.header}}" class="feed-card">
+        <view class="feed-card-head">
+          <navigator url="../userinfo/userinfo?userid={{item.userid}}" class="author-box">
+            <image src="{{item.usericon}}" class="author-avatar"></image>
+            <view class="author-meta">
+              <text class="author-name">{{item.username}}</text>
+              <text class="author-time">{{item.sub_time}}</text>
+            </view>
+          </navigator>
+
+          <navigator class="detail-link" url="./msgdetail/msgdetail?publishId={{item.publishId}}&username={{item.username}}&usericon={{item.usericon}}&text={{item.text}}&imagelist={{item.imagelist}}&time={{item.sub_time}}&image={{item.image}}&userid={{item.userid}}&claimPoint={{item.claimPoint}}&comments={{item.comments}}&likes={{item.likes}}">详情</navigator>
+        </view>
+
+        <navigator class="feed-card-body" url="./msgdetail/msgdetail?publishId={{item.publishId}}&username={{item.username}}&usericon={{item.usericon}}&text={{item.text}}&imagelist={{item.imagelist}}&time={{item.sub_time}}&image={{item.image}}&userid={{item.userid}}&claimPoint={{item.claimPoint}}&comments={{item.comments}}&likes={{item.likes}}">
+          <text class="feed-card-text">{{item.text}}</text>
+        </navigator>
+
+        <view wx:if="{{item.claimPoint}}" class="claim-row">
+          <text class="claim-chip">认领点：{{item.claimPoint}}</text>
+        </view>
+
+        <view class="engagement-row">
+          <text class="engagement-chip">评论 {{item.comments}}</text>
+          <text class="engagement-chip">点赞 {{item.likes}}</text>
+        </view>
+
+        <view wx:if="{{item.image != ''}}" class="image-grid">
+          <block wx:for="{{item.imagelist}}" wx:for-item="specific_url" wx:key="*this">
+            <image bindtap="photopreview" data-list="{{item.imagelist}}" src="{{specific_url}}" data-src="{{specific_url}}" class="feed-image" mode="aspectFill"></image>
+          </block>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

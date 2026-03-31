@@ -1,0 +1,52 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/register/register",
+    "pages/initinfo/initinfo",
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/edit/edit",
+    "pages/msg/msg",
+    "pages/index/msgdetail/msgdetail",
+    "pages/myinfo/myinfo",
+    "pages/test/index",
+    "pages/search/search",
+    "pages/userinfo/userinfo",
+    "pages/modifyinfo/modifyinfo",
+    "pages/modifyname/modifyname",
+    "pages/changepwd/changepwd"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#f6f3ea",
+    "navigationBarTitleText": "\u6821\u56ed\u5931\u7269\u62db\u9886",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "color": "#7f8976",
+    "selectedColor": "#2f6f52",
+    "backgroundColor": "#fffdf8",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "\u9996\u9875",
+        "iconPath": "images/tabbar/index.png",
+        "selectedIconPath": "images/tabbar/index_selected.png"
+      },
+      {
+        "pagePath": "pages/msg/msg",
+        "text": "\u8ba4\u9886\u70b9",
+        "iconPath": "images/tabbar/msg.png",
+        "selectedIconPath": "images/tabbar/msg_selected.png"
+      },
+      {
+        "pagePath": "pages/myinfo/myinfo",
+        "text": "\u6211\u7684",
+        "iconPath": "images/tabbar/myinfo.png",
+        "selectedIconPath": "images/tabbar/myinfo_selected.png"
+      }
+    ]
+  }
+}

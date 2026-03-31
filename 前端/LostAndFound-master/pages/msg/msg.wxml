@@ -1,0 +1,29 @@
+<view class="locator-page">
+  <view class="locator-hero">
+    <text class="locator-tag">Claim Guide</text>
+    <text class="locator-title">常见认领点</text>
+    <text class="locator-desc">以下按苏州工业职业技术学院校内常见点位整理，如果不确定物品去向，可以优先从这些地方开始查找。</text>
+  </view>
+
+  <view class="locator-list">
+    <block wx:for="{{list}}" wx:key="id">
+      <view class="locator-card">
+        <view id="{{item.id}}" class="locator-head" bindtap="kindToggle">
+          <view class="locator-head-copy">
+            <text class="locator-name">{{item.name}}</text>
+            <text class="locator-note">点击展开查看可优先联系的位置</text>
+          </view>
+          <image class="locator-icon" src="resources/kind/{{item.id}}.png"></image>
+        </view>
+
+        <view class="locator-body {{item.open ? 'locator-body-open' : ''}}">
+          <block wx:for="{{item.pages}}" wx:for-item="page" wx:key="zh">
+            <view class="locator-row">
+              <text class="locator-row-text">{{page.zh}}</text>
+            </view>
+          </block>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

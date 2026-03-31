@@ -1,0 +1,31 @@
+{
+  "description": "项目配置文件。",
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "postcss": true,
+    "minified": true,
+    "newFeature": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    }
+  },
+  "window": {
+    "enablePullDownRefresh": true
+  },
+  "compileType": "miniprogram",
+  "libVersion": "3.15.1",
+  "appid": "wxfa0d1fafcf777b9e",
+  "projectname": "NewLF(id)",
+  "condition": {},
+  "packOptions": {
+    "ignore": [],
+    "include": []
+  },
+  "editorSetting": {
+    "tabIndent": "insertSpaces",
+    "tabSize": 2
+  }
+}

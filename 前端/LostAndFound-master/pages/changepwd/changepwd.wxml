@@ -1,0 +1,50 @@
+<view class="password-page">
+  <view class="password-hero">
+    <text class="password-tag">Security Update</text>
+    <text class="password-title">修改登录密码</text>
+    <text class="password-desc">为了保证账号安全，这里会同时更新当前登录密码，并同步写入数据库里的登录绑定信息。</text>
+  </view>
+
+  <form bindsubmit="formSubmit" class="password-card">
+    <view class="password-block">
+      <text class="block-label">当前密码</text>
+      <view class="input-shell">
+        <input
+          class="password-input"
+          password="true"
+          bindinput="bindOriginInput"
+          placeholder="请输入当前密码"
+        />
+      </view>
+    </view>
+
+    <view class="password-block">
+      <text class="block-label">新密码</text>
+      <view class="input-shell">
+        <input
+          class="password-input"
+          password="true"
+          bindinput="bindNewInput"
+          placeholder="请设置 6 位以上新密码"
+        />
+      </view>
+    </view>
+
+    <view class="password-block">
+      <text class="block-label">确认新密码</text>
+      <view class="input-shell">
+        <input
+          class="password-input"
+          password="true"
+          bindinput="bindConfirmInput"
+          placeholder="请再次输入新密码"
+        />
+      </view>
+    </view>
+
+    <view class="password-tip">修改成功后，后续账号密码登录将以新密码为准。</view>
+    <button class="save-button" formType="submit" loading="{{loading}}" disabled="{{loading}}">
+      {{loading ? '保存中...' : '保存新密码'}}
+    </button>
+  </form>
+</view>

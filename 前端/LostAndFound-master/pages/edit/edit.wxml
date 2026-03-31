@@ -1,0 +1,73 @@
+<view class="editor-page">
+  <view class="editor-hero">
+    <text class="editor-tag">Publish Board</text>
+    <text class="editor-title">{{editorTitles[currentTab]}}</text>
+    <text class="editor-desc">{{editorDescriptions[currentTab]}}</text>
+  </view>
+
+  <view class="editor-switch">
+    <block wx:for="{{navbar}}" wx:key="*this">
+      <view class="switch-item {{currentTab==index?'switch-item-active':''}}" bindtap="navbarTap" data-idx="{{index}}">{{item}}</view>
+    </block>
+  </view>
+
+  <form bindsubmit="formSubmit" bindreset="formReset" class="editor-card">
+    <view class="editor-section">
+      <text class="section-label">信息描述</text>
+      <textarea class="editor-textarea" placeholder="{{editorPlaceholders[currentTab]}}" name="input" auto-height></textarea>
+    </view>
+
+    <view class="editor-section">
+      <view class="section-row">
+        <text class="section-label">上传图片</text>
+        <text class="section-note">{{imageList.length}} / 3</text>
+      </view>
+
+      <view class="image-grid">
+        <block wx:for="{{imageList}}" wx:for-item="image" wx:key="*this">
+          <image mode="aspectFill" class="preview-image" src="{{image}}" data-src="{{image}}" bindtap="previewImage"></image>
+        </block>
+
+        <view wx:if="{{imageList.length < 3}}" class="upload-slot" bindtap="chooseImage">
+          <image src="../../images/edit/plus.png" class="upload-icon"></image>
+          <text class="upload-text">添加图片</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="editor-section">
+      <text class="section-label">物品分类</text>
+      <picker bindchange="bindPickerChange" value="{{category_index}}" range="{{array}}">
+        <view class="picker-shell">
+          <text class="picker-value">{{array[category_index]}}</text>
+          <text class="picker-arrow">选择</text>
+        </view>
+      </picker>
+    </view>
+
+    <view class="editor-section">
+      <view class="section-row section-row-stack">
+        <text class="section-label">{{claimPointTitles[currentTab]}}</text>
+        <text class="section-caption">{{claimPointHints[currentTab]}}</text>
+      </view>
+
+      <picker bindchange="bindClaimPointChange" value="{{claimPointIndex}}" range="{{claimPointOptions}}">
+        <view class="picker-shell">
+          <text class="picker-value">{{claimPointOptions[claimPointIndex]}}</text>
+          <text class="picker-arrow">选择</text>
+        </view>
+      </picker>
+
+      <input
+        wx:if="{{claimPointOptions[claimPointIndex] === '自定义认领点'}}"
+        class="claim-point-input"
+        type="text"
+        placeholder="例如：图书馆一楼服务台、二食堂门口保安处"
+        value="{{claimPointCustom}}"
+        bindinput="bindClaimPointInput"
+      />
+    </view>
+
+    <button class="submit-button" formType="submit">{{editorTitles[currentTab]}}</button>
+  </form>
+</view>

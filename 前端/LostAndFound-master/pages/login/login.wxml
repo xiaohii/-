@@ -1,0 +1,45 @@
+<view class="auth-page">
+  <view class="auth-orb auth-orb-left"></view>
+  <view class="auth-orb auth-orb-right"></view>
+
+  <view class="auth-topbar">
+    <view class="auth-back" bindtap="goHome">
+      <text class="auth-back-text">返回首页</text>
+    </view>
+  </view>
+
+  <view class="auth-hero">
+    <text class="auth-kicker">Campus Lost &amp; Found</text>
+    <text class="auth-title">欢迎回来</text>
+    <text class="auth-desc">登录后可以快速查看校园失物信息、发布线索并管理你的认领记录。</text>
+  </view>
+
+  <view class="auth-card">
+    <view class="field-group">
+      <text class="field-label">学工号</text>
+      <view class="field-shell">
+        <image class="field-icon" src="../../images/source/name.png"></image>
+        <input class="field-input" maxlength="11" bindinput="bindKeyInput" placeholder="请输入学工号" />
+      </view>
+    </view>
+
+    <view class="field-group">
+      <text class="field-label">密码</text>
+      <view class="field-shell">
+        <image class="field-icon" src="../../images/source/key.png"></image>
+        <input class="field-input" password="true" bindinput="bindPwdInput" placeholder="请输入密码" />
+      </view>
+    </view>
+
+    <button class="auth-button" loading="{{loading}}" bindtap="handleAuthLogin">登录并绑定微信</button>
+
+    <view class="auth-tip">
+      <text class="tip-text">请先完成注册，登录时使用同一学工号和密码即可。</text>
+    </view>
+
+    <view class="auth-links">
+      <text class="auth-links-text">还没有账号？</text>
+      <text class="auth-links-action" bindtap="goRegister">去注册</text>
+    </view>
+  </view>
+</view>
